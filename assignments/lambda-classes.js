@@ -24,6 +24,10 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student} receives a perfect score on ${subject}`);
   }
+  gradeStud(obj) {
+    obj.grade = Math.floor(Math.random() * Math.floor(100));
+    console.log(obj.grade);
+  }
 }
 
 class Student extends Person {
@@ -32,6 +36,7 @@ class Student extends Person {
     this.previousBackground = stAtrrs.previousBackground;
     this.className = stAtrrs.className;
     this.favSubjects = stAtrrs.favSubjects;
+    this.grade = stAtrrs.grade;
   }
   listsSubjects() {
     this.favSubjects.forEach(element => console.log(element));
@@ -41,6 +46,13 @@ class Student extends Person {
   }
   sprintChallenge(subject) {
     console.log(`${this.name} has begun sprint challenge on ${subject}`);
+  }
+  graduate() {
+    if (this.grade >= 70) {
+      console.log((this.grade = "graduated!"));
+    } else {
+      console.log(this.grade);
+    }
   }
 }
 
@@ -84,7 +96,8 @@ const fritz = new Student({
   gender: "male",
   previousBackground: "Tier 2 Tech support",
   className: "WEBPT5",
-  favSubjects: ["Html", "CSS", "JavaScript"]
+  favSubjects: ["Html", "CSS", "JavaScript"],
+  grade: 95
 });
 
 fritz.listsSubjects();
@@ -104,3 +117,8 @@ const alex = new ProjectManager({
 
 alex.standUp("WEBPT5");
 alex.debugsCode(fritz, "HTML");
+
+// Stretch Problem
+fred.gradeStud(fritz);
+alex.gradeStud(fritz);
+fritz.graduate();
