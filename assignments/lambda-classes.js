@@ -37,10 +37,10 @@ class Student extends Person {
     this.favSubjects.forEach(element => console.log(element));
   }
   PRAssignment(subject) {
-    console.log(`${student.name} has submitted a PR for ${subject}`);
+    console.log(`${this.name} has submitted a PR for ${subject}`);
   }
   sprintChallenge(subject) {
-    console.log(`${student.name} has begun sprint challenge on ${subject}`);
+    console.log(`${this.name} has begun sprint challenge on ${subject}`);
   }
 }
 
@@ -55,7 +55,52 @@ class ProjectManager extends Instructor {
       `${this.name} announces to ${channel}, @channel standy times!​​​​​`
     );
   }
-  debugsCode(name, subject) {
-    console.log(`${name} debugs {student.name}'s code on ${subject}`);
+  debugsCode(obj, subject) {
+    console.log(`${this.name} debugs ${obj.name}'s code on ${subject}`);
   }
 }
+
+//Testing Instructor code
+
+const fred = new Instructor({
+  name: "Fred",
+  location: "Bedrock",
+  age: 37,
+  gender: "male",
+  favLanguage: "JavaScript",
+  specialty: "Front-end",
+  catchPhrase: `Don't forget the homies`
+});
+
+fred.demo("JS");
+fred.grade("Fritz", "JavaScript");
+
+//Testing Student code
+
+const fritz = new Student({
+  name: "Fritz",
+  location: "Jacsonville",
+  age: 34,
+  gender: "male",
+  previousBackground: "Tier 2 Tech support",
+  className: "WEBPT5",
+  favSubjects: ["Html", "CSS", "JavaScript"]
+});
+
+fritz.listsSubjects();
+fritz.PRAssignment("CSS");
+fritz.sprintChallenge("JavaScript");
+
+//Testing ProjectManager code
+
+const alex = new ProjectManager({
+  name: "Alex",
+  location: "UT",
+  age: 25, //Trying to guess lol
+  gender: "male",
+  gradClassName: "WEB1",
+  favInstructor: "Pope"
+});
+
+alex.standUp("WEBPT5");
+alex.debugsCode(fritz, "HTML");
